@@ -35,7 +35,7 @@ const ToDoList = (props) => {
 						<li key={todo.id}>
 							{todo.title}
 							<button
-								class="btn btn-primary"
+								class="btn btn-outline-warning"
 								type="submit"
 								onClick={() => deleteTodo(todo.id)}>
 								Borrar
