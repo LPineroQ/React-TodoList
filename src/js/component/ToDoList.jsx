@@ -2,42 +2,42 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 const ToDoList = (props) => {
-	const [listTodo, setListTodo] = useState([]);
-	const [newTodo, setNewTodo] = useState("");
+	const [todos, setTodos] = useState([]);
+	const [task, setTask] = useState("");
 
-	console.log({ newTodo });
-	const handleClick = () => {
-		console.log("Click");
-		const newListTodo = listTodo.concat({
-			title: newTodo,
-			id: listTodo.length + 1,
+	const addTodo = () => {
+		const newTodos = todos.concat({
+			title: task,
+			id: todos.length + 1,
 		});
-		setListTodo(newListTodo);
+		setTodos(newTodos);
 	};
 
-	const deleteTodo = (todo) => {
-		const removeTodo = listTodo.filter((newTodo) => todo.id != newTodo.id);
-		setListTodo(removeTodo);
+	const deleteTodo = (todoId) => {
+		const removeTodo = todos.filter((task) => task.id != todoId);
+		setTodos(removeTodo);
 	};
-
-	console.log({ listTodo });
-	console.log({ props });
 	return (
 		<div>
 			<input
 				type="text"
-				value={newTodo}
+				value={task}
 				onChange={(e) => {
-					setNewTodo(e.target.value);
+					setTask(e.target.value);
 				}}></input>
-			<button onClick={handleClick}>Añadir tarea</button>
+			<button class="btn btn-primary" type="submit" onClick={addTodo}>
+				Añadir tarea
+			</button>
 			<ul>
-				{listTodo.map((listTodo) => {
-					console.log(listTodo);
+				{todos.map((todo) => {
+					console.log(todos);
 					return (
-						<li key={listTodo.id}>
-							{listTodo.title}
-							<button onClick={() => deleteTodo(listTodo.id)}>
+						<li key={todo.id}>
+							{todo.title}
+							<button
+								class="btn btn-primary"
+								type="submit"
+								onClick={() => deleteTodo(todo.id)}>
 								Borrar
 							</button>
 						</li>
@@ -46,12 +46,6 @@ const ToDoList = (props) => {
 			</ul>
 		</div>
 	);
-};
-
-ToDoList.propTypes = {
-	id: PropTypes.number,
-	todo: PropTypes.string,
-	deleteTodo: PropTypes.func,
 };
 
 export default ToDoList;
