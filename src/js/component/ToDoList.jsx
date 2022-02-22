@@ -33,12 +33,12 @@ const ToDoList = (props) => {
 					console.log(todos);
 					return (
 						<li key={todo.id}>
-							{todo.title}
+							<b>{todo.title}</b>
 							<button
-								class="btn btn-outline-warning"
+								class="btn btn-success"
 								type="submit"
 								onClick={() => deleteTodo(todo.id)}>
-								Borrar
+								Realizada
 							</button>
 						</li>
 					);
