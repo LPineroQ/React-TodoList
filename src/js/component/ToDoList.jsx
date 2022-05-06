@@ -1,9 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { getTodos } from "../../service/todo.js";
 
 const ToDoList = (props) => {
 	const [todos, setTodos] = useState([]);
 	const [task, setTask] = useState("");
+
+	// useEffect(() => {
+	// 	getTodos()
+	// 		.then((res) => {
+	// 			return res.json();
+	// 		})
+	// 		.then((data) => {
+	// 			console.log(data);
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		});
+	// }, []);
+	// console.log(todos);
 
 	const addTodo = () => {
 		const newTodos = todos.concat({
@@ -25,7 +40,7 @@ const ToDoList = (props) => {
 				onChange={(e) => {
 					setTask(e.target.value);
 				}}></input>
-			<button class="btn btn-primary" type="submit" onClick={addTodo}>
+			<button className="btn btn-primary" type="submit" onClick={addTodo}>
 				Añadir tarea
 			</button>
 			<ul>
@@ -35,7 +50,7 @@ const ToDoList = (props) => {
 						<li key={todo.id}>
 							<b>{todo.title}</b>
 							<button
-								class="btn btn-success"
+								className="btn btn-success"
 								type="submit"
 								onClick={() => deleteTodo(todo.id)}>
 								Realizada
