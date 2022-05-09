@@ -6,19 +6,19 @@ const ToDoList = (props) => {
 	const [todos, setTodos] = useState([]);
 	const [task, setTask] = useState("");
 
-	// useEffect(() => {
-	// 	getTodos()
-	// 		.then((res) => {
-	// 			return res.json();
-	// 		})
-	// 		.then((data) => {
-	// 			console.log(data);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
-	// }, []);
-	// console.log(todos);
+	useEffect(() => {
+		getTodos()
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				console.log(data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+	console.log(todos);
 
 	const addTodo = () => {
 		const newTodos = todos.concat({
